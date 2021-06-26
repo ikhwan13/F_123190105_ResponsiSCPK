@@ -54,7 +54,7 @@ function SPK_SAW_OpeningFcn(hObject, eventdata, handles, varargin)
 
 %menampilkan isi tabel ketika program dijalankan tanpa mengklik tombol
 table = xlsread('DATA RUMAH.xlsx'); %membaca data excel
-table =[table(:,1) table(:,3) table(:,4) table(:,5) table(:,6) table(:,7) table(:,8)]; %mengambil data dari kolom C,D,E,H
+table =[table(:,1) table(:,3) table(:,4) table(:,5) table(:,6) table(:,7) table(:,8)]; %mengambil data dari kolom A,C,D,E,F,G,H
 set(handles.tabel,'Data',table); %menampilkan data ke dalam tabel di GUI
 
 % Choose default command line output for SPK_SAW
@@ -85,7 +85,7 @@ function proses_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 
 data = readtable('DATA RUMAH.xlsx'); %membaca data tabel
-rumah = data(:,2); %mengambil data kolom A(nomor urut data)
+rumah = data(:,2); %mengambil data kolom B(nomor urut data)
 data =[data(:,3) data(:,4) data(:,5) data(:,6) data(:,7) data(:,8)]; %mengambil data tabel yang akan dihitung vektornya
 data = table2array(data); %mengubah data tabel menjadi data array/matriks
 rumah = table2array(rumah); %mengubah data tabel menjadi data array/matriks
@@ -114,7 +114,7 @@ end;
 
 
 [vektorV,index] = maxk(V,20); %membuat tabel perangkingan
-rumah = rumah(index);
+rumah = rumah(index); %index diganti menjadi nama rumah
 vektorV = transpose(num2cell(vektorV)); %melakukan pengubahan dari data horizontal ke data vertikal
 %dan merubah array ke bentuk tabel
 set(handles.tabel2,'Data',[rumah vektorV]); %menampilkan tabel perangkingan
